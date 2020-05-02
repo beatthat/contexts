@@ -1,0 +1,48 @@
+{
+  "name": "contexts",
+  "scope": "beatthat",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -f *.tgz package-lock.json && cd test && npm run clean",
+    "template-update": "node scripts/template-update.js",
+    "pretest-install": "rm -f *.tgz",
+    "test-install": "npm pack && cp ${npm_package_name}-${npm_package_version}.tgz ${npm_package_name}-latest.tgz && cd test && npm run clean && npm install",
+    "test-cp2src": "cd test && node scripts/cp2src.js",
+    "test-overwrite2src": "cd test && node scripts/overwrite2src.js",
+    "docs-generate": "node scripts/docs-generate.js",
+    "version": "git add -A",
+    "postinstall": "node scripts/postinstall.js",
+    "postversion": "git push && git push --tags && npm run clean",
+    "overwrite2clone": "./node_modules/.bin/overwrite2clone"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beatthat/contexts.git"
+  },
+  "keywords": [],
+  "author": "Larry Kirschner <larrykirschner@gmail.com> (https://ict.usc.edu/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beatthat/contexts/issues"
+  },
+  "homepage": "https://github.com/beatthat/contexts#readme",
+  "files": [
+    "index.js",
+    "scripts",
+    "src",
+    "Runtime",
+    "Samples",
+    "README.md",
+    "readmefiles"
+  ],
+  "dependencies": {
+    "notifications": "github:beatthat/notifications",
+    "path": "^0.12.7",
+    "requests": "github:beatthat/requests",
+    "unity-npm-utils": "github:beatthat/unity-npm-utils#semver:^1.0.0"
+  },
+  "devDependencies": {}
+}
