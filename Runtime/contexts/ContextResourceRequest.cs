@@ -52,11 +52,10 @@ namespace BeatThat.Contexts
 			CompleteRequest();
 		}
 
-		virtual public void Execute(Action<Request<T>> callback = null)
+		virtual public void Execute(Action<Request<T>> callback)
 		{
-			if(callback == null) {
-				Execute(callback);
-				return;
+			if(callback == null)  {
+				Execute();
 			}
 			RequestExecutionPool<T, Request<T>>.Get().Execute(this, callback);
 		}
