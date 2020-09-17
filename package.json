@@ -16,7 +16,15 @@
     "version": "git add -A",
     "postinstall": "node scripts/postinstall.js",
     "postversion": "git push && git push --tags && npm run clean",
-    "overwrite2clone": "./node_modules/.bin/overwrite2clone"
+    "overwrite2clone": "./node_modules/.bin/overwrite2clone",
+    "//": {
+      "clean": "deletes all non source files, products of tests etc",
+      "template-update": "pulls the latest version of the https://github.com/beatthat/unpm-unity-package-template.git and syncs changes to this package",
+      "test-install": "installs the 'test' package, which can be used for development",
+      "test-cp2src": "copies changes from 'test' package back to package src but does NOT delete removed files",
+      "test-overwrite2src": "copies changes from 'test' package back to src. Deletes src before the copy, so effectively whatever is in test becomes the src",
+      "npm version [patch|minor|major]": "after everything commited, use npm version to push a tagged release with bumped version"
+    }
   },
   "repository": {
     "type": "git",
@@ -41,7 +49,7 @@
   "dependencies": {
     "notifications": "github:beatthat/notifications",
     "path": "^0.12.7",
-    "requests": "github:beatthat/requests",
+    "requests": "github:beatthat/requests#semver:^2.0.0",
     "unity-npm-utils": "github:beatthat/unity-npm-utils#semver:^1.0.0"
   },
   "devDependencies": {}

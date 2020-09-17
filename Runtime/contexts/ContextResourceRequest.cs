@@ -15,6 +15,8 @@ namespace BeatThat.Contexts
 
 		public T item { get; private set; }
 		public string path { get; private set; }
+
+        public override string loggingName => this.path;
 		
 		private ResourceRequest req { get; set; }
 		private GameObject runner { get; set; }
